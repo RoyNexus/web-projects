@@ -4,21 +4,48 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Simulador de finiquitos - Entelgy CCOO</title>
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-
-<!-- Optional theme -->
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<title>Simulador</title>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 </head>
-<body>
-	<h2>Simulador de finiquitos</h2>
+<body>	
+	<div class="container" id="mainContainer">	
+		<form class="form-horizontal">
+			<fieldset>		
+			<!-- Form Name -->
+			<legend>Simulaci&oacute;n</legend>
+				<!-- Salario Bruto Anual -->			
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="salario">Salario Bruto Anual</label>
+				  <div class="col-md-4">
+				    <div class="input-group">
+				      <input id="salario" name="salario" class="form-control" placeholder="0" type="text">
+				      <span class="input-group-addon">€</span>
+				    </div>
+				    <p class="help-block">Ingresos brutos totales de los &uacute;ltimos doce meses</p>
+				  </div>
+				</div>
+				<!-- Antigüedad -->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="antiguedad">Fecha de Antigüedad</label>
+				  <div class="col-md-4">
+				    <div class="input-group">
+				      <input id="antiguedad" name="antiguedad" class="form-control" placeholder="0" type="text">
+				      <span class="input-group-addon">€</span>
+				    </div>
+				    <p class="help-block">Ingresos brutos totales de los &uacute;ltimos doce meses</p>
+				  </div>
+				</div>				
+			</fieldset>
+		</form>
+	</div>
 
-
-
-	<!-- Latest compiled and minified JavaScript -->
-	<script
-		src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<!-- JQuery 1.11 -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<!-- Bootstrap JS 3.1.1 -->
+	<script	src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>	
+	<!-- JQuery UI 1.10 --> 
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css">
 </body>
 </html>

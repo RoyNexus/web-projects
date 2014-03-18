@@ -7,6 +7,7 @@
 <title>Simulador</title>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/custom.css">
 </head>
 <body>	
 	<div class="container" id="mainContainer">	
@@ -16,26 +17,76 @@
 			<legend>Simulaci&oacute;n</legend>
 				<!-- Salario Bruto Anual -->			
 				<div class="form-group">
-				  <label class="col-md-4 control-label" for="salario">Salario Bruto Anual</label>
+				  <label class="col-md-2 control-label" for="salario">Salario bruto anual</label>
 				  <div class="col-md-4">
 				    <div class="input-group">
-				      <input id="salario" name="salario" class="form-control" placeholder="0" type="text">
-				      <span class="input-group-addon">€</span>
+				      <input id="salario" name="salario" class="form-control" placeholder="0" type="number" min="6000" step="50" pattern="\d+"/>
+				      <span class="input-group-addon">euros</span>
 				    </div>
 				    <p class="help-block">Ingresos brutos totales de los &uacute;ltimos doce meses</p>
 				  </div>
 				</div>
-				<!-- Antigüedad -->
+				<!-- Antiguedad -->
 				<div class="form-group">
-				  <label class="col-md-4 control-label" for="antiguedad">Fecha de Antigüedad</label>
+				  <label class="col-md-2 control-label" for="antiguedad">Fecha de antig&uuml;edad</label>
+				  <div class="col-md-4">
+					<div class="input-group">				  			    
+				      <input id="antiguedad" name="antiguedad" class="form-control" placeholder="" type="text">
+				      <span class="input-group-addon">d&iacute;a/mes/a&ntilde;o</span>
+				    </div>				      				    
+				    <p class="help-block">Fecha de antig&uuml;edad que figura en la cabecera de la n&oacute;mina</p>
+				  </div>
+				</div>
+				<!-- Fecha de despido -->
+				<div class="form-group">
+				  <label class="col-md-2 control-label" for="despido">Fecha de despido</label>
+				  <div class="col-md-4">
+				  	<div class="input-group">			    
+				      <input id="despido" name="despido" class="form-control" placeholder="" type="text">
+				      <span class="input-group-addon">d&iacute;a/mes/a&ntilde;o</span>
+				    </div>				      				    
+				    <p class="help-block">Fecha del despido, si se produce un viernes se debe indicar como fecha el lunes siguiente</p>
+				  </div>
+				</div>
+				<!-- Vacaciones disfrutadas -->
+				<div class="form-group">
+				  <label class="col-md-2 control-label" for="salario">D&iacute;as de vacaciones disfrutadas</label>
 				  <div class="col-md-4">
 				    <div class="input-group">
-				      <input id="antiguedad" name="antiguedad" class="form-control" placeholder="0" type="text">
-				      <span class="input-group-addon">€</span>
+				      <input id="salario" name="salario" class="form-control" placeholder="0" type="text">
+				      <span class="input-group-addon">d&iacute;as</span>
 				    </div>
-				    <p class="help-block">Ingresos brutos totales de los &uacute;ltimos doce meses</p>
+				    <p class="help-block">D&iacute;as de vacaciones disfrutados en el a&ntilde;o en curso</p>
 				  </div>
-				</div>				
+				</div>	
+				<!-- Numero de pagas -->
+				<div class="form-group">
+				  <label class="col-md-2 control-label" for="pagas">N&uacute;mero de pagas</label>
+				  <div class="col-md-4">
+				    <div id="pagas">
+    					<input type="radio" id="12pagas" name="numPagas"><label for="12pagas">12 pagas</label>
+    					<input type="radio" id="14pagas" name="numPagas" checked="checked"><label for="14pagas">14 pagas</label>    
+  					</div>
+				  </div>
+				</div>
+				<!-- Tipo de despido -->
+				<div class="form-group">
+				  <label class="col-md-2 control-label" for="pagas">Tipo de despido</label>
+				  <div class="col-md-4">
+				    <div id="despidos">
+    					<input type="radio" id="improcedente" name="tipoDespido" checked="checked"><label for="improcedente">Improcedente</label>
+    					<input type="radio" id="objetivo" name="tipoDespido"><label for="objetivo">Objetivo</label>
+    					<input type="radio" id="obra" name="tipoDespido"><label for="obra">Fin de obra</label>    
+  					</div>
+				  </div>
+				</div>							
+				<!-- Calcular button -->
+				<div class="form-group">
+				  <label class="col-md-2 control-label" for="calcularBtn"></label>
+				  <div class="col-md-4">
+				    <button id="calcularBtn" name="calcularBtn" class="btn btn-info">Calcular</button>
+				  </div>
+				</div>
 			</fieldset>
 		</form>
 	</div>
@@ -47,5 +98,7 @@
 	<!-- JQuery UI 1.10 --> 
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css">
+	
+	<script src="js/events.js" charset="UTF-8"></script>
 </body>
 </html>

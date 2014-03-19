@@ -58,3 +58,12 @@ $(document).ready(function() {
 		$("#despidos").buttonset();
 	});
 });
+
+/**
+ * Muestra las tabs
+ */
+$(document).ready(function() {
+	$(function() {
+	    $("#tabs").tabs();
+	  });
+});

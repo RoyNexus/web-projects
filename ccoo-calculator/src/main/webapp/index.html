@@ -10,85 +10,149 @@
 <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>	
-	<div class="container" id="mainContainer">	
-		<form class="form-horizontal">
-			<fieldset>		
-			<!-- Form Name -->
-			<legend>Simulaci&oacute;n</legend>
-				<!-- Salario Bruto Anual -->			
-				<div class="form-group">
-				  <label class="col-md-2 control-label" for="salario">Salario bruto anual</label>
-				  <div class="col-md-4">
-				    <div class="input-group">
-				      <input id="salario" name="salario" class="form-control" value="24000" type="number" min="0" step="50" pattern="\d+"/>
-				      <span class="input-group-addon">euros</span>
-				    </div>
-				    <p class="help-block">Ingresos brutos totales de los &uacute;ltimos doce meses</p>
-				  </div>
-				</div>
-				<!-- Antiguedad -->
-				<div class="form-group">
-				  <label class="col-md-2 control-label" for="antiguedad">Fecha de antig&uuml;edad</label>
-				  <div class="col-md-4">
-					<div class="input-group">				  			    
-				      <input id="antiguedad" name="antiguedad" class="form-control" placeholder="" type="text">
-				      <span class="input-group-addon">d&iacute;a/mes/a&ntilde;o</span>
-				    </div>				      				    
-				    <p class="help-block">Fecha de antig&uuml;edad que figura en la cabecera de la n&oacute;mina</p>
-				  </div>
-				</div>
-				<!-- Fecha de despido -->
-				<div class="form-group">
-				  <label class="col-md-2 control-label" for="despido">Fecha de despido</label>
-				  <div class="col-md-4">
-				  	<div class="input-group">			    
-				      <input id="despido" name="despido" class="form-control" placeholder="" type="text">
-				      <span class="input-group-addon">d&iacute;a/mes/a&ntilde;o</span>
-				    </div>				      				    
-				    <p class="help-block">Fecha del despido, si se produce un viernes se debe indicar como fecha el lunes siguiente</p>
-				  </div>
-				</div>
-				<!-- Vacaciones disfrutadas -->
-				<div class="form-group">
-				  <label class="col-md-2 control-label" for="disfrutadas">D&iacute;as de vacaciones disfrutadas</label>
-				  <div class="col-md-4">
-				    <div class="input-group">
-				      <input id="disfrutadas" name="disfrutadas" class="form-control" type="number" value="0" max="30" min="0" step="1" pattern="\d+">
-				      <span class="input-group-addon">d&iacute;as</span>
-				    </div>
-				    <p class="help-block">D&iacute;as de vacaciones disfrutados en el a&ntilde;o en curso</p>
-				  </div>
-				</div>	
-				<!-- Numero de pagas -->
-				<div class="form-group">
-				  <label class="col-md-2 control-label" for="pagas">N&uacute;mero de pagas</label>
-				  <div class="col-md-4">
-				    <div id="pagas">
-    					<input type="radio" id="12pagas" name="numPagas"><label for="12pagas">12 pagas</label>
-    					<input type="radio" id="14pagas" name="numPagas" checked="checked"><label for="14pagas">14 pagas</label>    
-  					</div>
-				  </div>
-				</div>
-				<!-- Tipo de despido -->
-				<div class="form-group">
-				  <label class="col-md-2 control-label" for="pagas">Tipo de despido</label>
-				  <div class="col-md-4">
-				    <div id="despidos">
-    					<input type="radio" id="improcedente" name="tipoDespido" checked="checked"><label for="improcedente">Improcedente</label>
-    					<input type="radio" id="objetivo" name="tipoDespido"><label for="objetivo">Objetivo</label>
-    					<input type="radio" id="obra" name="tipoDespido"><label for="obra">Fin de obra</label>    
-  					</div>
-				  </div>
-				</div>							
-				<!-- Calcular button -->
-				<div class="form-group">
-				  <label class="col-md-2 control-label" for="calcularBtn"></label>
-				  <div class="col-md-4">
-				    <button id="calcularBtn" name="calcularBtn" class="btn btn-info">Calcular</button>
-				  </div>
-				</div>
-			</fieldset>
-		</form>
+	<div id="tabs">
+	  	<ul>
+    		<li><a href="#mainContainer">Datos simulación</a></li>
+    		<li><a href="#results">Resultados</a></li>    		
+  		</ul>
+		<div class="container" id="mainContainer">	
+			<form class="form-horizontal">
+				<fieldset>		
+				<!-- Form Name -->
+				<legend>Datos simulaci&oacute;n</legend>
+					<!-- Salario Bruto Anual -->			
+					<div class="form-group">
+					  <label class="col-md-2 control-label" for="salario">Salario bruto anual</label>
+					  <div class="col-md-4">
+					    <div class="input-group">
+					      <input id="salario" name="salario" class="form-control" value="24000" type="number" min="0" step="50" pattern="\d+"/>
+					      <span class="input-group-addon">euros</span>
+					    </div>
+					    <p class="help-block">Ingresos brutos totales de los &uacute;ltimos doce meses</p>
+					  </div>
+					</div>
+					<!-- Antiguedad -->
+					<div class="form-group">
+					  <label class="col-md-2 control-label" for="antiguedad">Fecha de antig&uuml;edad</label>
+					  <div class="col-md-4">
+						<div class="input-group">				  			    
+					      <input id="antiguedad" name="antiguedad" class="form-control" placeholder="" type="text">
+					      <span class="input-group-addon">d&iacute;a/mes/a&ntilde;o</span>
+					    </div>				      				    
+					    <p class="help-block">Fecha de antig&uuml;edad que figura en la cabecera de la n&oacute;mina</p>
+					  </div>
+					</div>
+					<!-- Fecha de despido -->
+					<div class="form-group">
+					  <label class="col-md-2 control-label" for="despido">Fecha de despido</label>
+					  <div class="col-md-4">
+					  	<div class="input-group">			    
+					      <input id="despido" name="despido" class="form-control" placeholder="" type="text">
+					      <span class="input-group-addon">d&iacute;a/mes/a&ntilde;o</span>
+					    </div>				      				    
+					    <p class="help-block">Fecha del despido, si se produce un viernes se debe indicar como fecha el lunes siguiente</p>
+					  </div>
+					</div>
+					<!-- Vacaciones disfrutadas -->
+					<div class="form-group">
+					  <label class="col-md-2 control-label" for="disfrutadas">D&iacute;as de vacaciones disfrutadas</label>
+					  <div class="col-md-4">
+					    <div class="input-group">
+					      <input id="disfrutadas" name="disfrutadas" class="form-control" type="number" value="0" max="30" min="0" step="1" pattern="\d+">
+					      <span class="input-group-addon">d&iacute;as</span>
+					    </div>
+					    <p class="help-block">D&iacute;as de vacaciones disfrutados en el a&ntilde;o en curso</p>
+					  </div>
+					</div>	
+					<!-- Numero de pagas -->
+					<div class="form-group">
+					  <label class="col-md-2 control-label" for="pagas">N&uacute;mero de pagas</label>
+					  <div class="col-md-4">
+					    <div id="pagas">
+	    					<input type="radio" id="12pagas" name="numPagas"><label for="12pagas">12 pagas</label>
+	    					<input type="radio" id="14pagas" name="numPagas" checked="checked"><label for="14pagas">14 pagas</label>    
+	  					</div>
+					  </div>
+					</div>
+					<!-- Tipo de despido -->
+					<div class="form-group">
+					  <label class="col-md-2 control-label" for="pagas">Tipo de despido</label>
+					  <div class="col-md-4">
+					    <div id="despidos">
+	    					<input type="radio" id="improcedente" name="tipoDespido" checked="checked"><label for="improcedente">Improcedente</label>
+	    					<input type="radio" id="objetivo" name="tipoDespido"><label for="objetivo">Objetivo</label>
+	    					<input type="radio" id="obra" name="tipoDespido"><label for="obra">Fin de obra</label>    
+	  					</div>
+					  </div>
+					</div>							
+					<!-- Calcular button -->
+					<div class="form-group">
+					  <label class="col-md-2 control-label" for="calcularBtn"></label>
+					  <div class="col-md-4">
+					    <button id="calcularBtn" name="calcularBtn" class="btn btn-info">Calcular</button>
+					  </div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<div class="container" id="results">
+			<form class="form-horizontal">
+				<fieldset>
+				<!-- Form Name -->
+				<legend>Resultados simulaci&oacute;n</legend>
+					<!-- Finiquito mes -->
+					<div class="form-group">
+					  <label class="col-md-3 control-label" for="salario">Finiquito mes</label>
+					  <div class="col-md-3">
+					    <div class="input-group">
+					      <input id="finiquitoMes" name="finiquitoMes" class="form-control" value="0" type="text" />
+					      <span class="input-group-addon">euros</span>
+					    </div>					    
+					  </div>
+					</div>
+					<!-- Finiquito vacaciones -->			
+					<div class="form-group">
+					  <label class="col-md-3 control-label" for="salario">Finiquito vacaciones</label>
+					  <div class="col-md-3">
+					    <div class="input-group">
+					      <input id="finiquitoVacaciones" name="finiquitoVacaciones" class="form-control" value="0" type="text" />
+					      <span class="input-group-addon">euros</span>
+					    </div>
+					  </div>
+					</div>
+					<!-- Paga extra -->			
+					<div class="form-group">
+					  <label class="col-md-3 control-label" for="salario">Paga extra</label>
+					  <div class="col-md-3">
+					    <div class="input-group">
+					      <input id="pagaExtra" name="pagaExtra" class="form-control" value="0" type="text" />
+					      <span class="input-group-addon">euros</span>
+					    </div>
+					  </div>
+					</div>				
+					<!-- Total finiquito -->			
+					<div class="form-group">
+					  <label class="col-md-3 control-label" for="salario">Total finiquito</label>
+					  <div class="col-md-3">
+					    <div class="input-group">
+					      <input id="totalFiniquito" name="totalFiniquito" class="form-control" value="0" type="text" />
+					      <span class="input-group-addon">euros</span>
+					    </div>
+					  </div>
+					</div>
+					<!-- Total indemnizacion -->			
+					<div class="form-group">
+					  <label class="col-md-3 control-label" for="salario">Total indemnizaci&oacute;n</label>
+					  <div class="col-md-3">
+					    <div class="input-group">
+					      <input id="totalIndemnizacion" name="totalIndemnizacion" class="form-control" value="0" type="text" />
+					      <span class="input-group-addon">euros</span>
+					    </div>
+					  </div>
+					</div>												
+				</fieldset>			
+			</form>
+		</div>
 	</div>
 
 	<!-- JQuery 1.11 -->

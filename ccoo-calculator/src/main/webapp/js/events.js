@@ -1,3 +1,31 @@
+var DAYS_PER_YEAR = 360;
+var DECIMAL_ACCURACY = 2;
+
+
+function calcularFiniquitoMes(salario) {
+	return parseInt(salario) / DAYS_PER_YEAR;
+}
+
+function convertirDosDecimalesConComa(number) {
+	number = number.toFixed(DECIMAL_ACCURACY);
+	var string = number.toString();	
+	return string.replace(".", ",");
+}
+
+/**
+ * Calcular button click event
+ */
+$(document).ready(function() {
+	$("#simulationForm").submit(function(event) {		  
+		  event.preventDefault();
+		  
+		  var finiquitoMes = calcularFiniquitoMes($("#salario").val());
+		  
+		  $("#finiquitoMes").val(convertirDosDecimalesConComa(finiquitoMes));
+		  $("#tabs").tabs("option", "active", 1);
+	});	
+});
+
 /**
  * Dates for Spain
  */
@@ -65,5 +93,5 @@ $(document).ready(function() {
 $(document).ready(function() {
 	$(function() {
 	    $("#tabs").tabs();
-	  });
+	});
 });

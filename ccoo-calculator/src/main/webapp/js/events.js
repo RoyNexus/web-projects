@@ -1,30 +1,41 @@
 var DAYS_PER_YEAR = 360;
 var DECIMAL_ACCURACY = 2;
 
+function calculateDailyWage(wage) {
+	return parseInt(wage) / DAYS_PER_YEAR;
+}
 
-function calcularFiniquitoMes(salario) {
-	return parseInt(salario) / DAYS_PER_YEAR;
+function calculateCurrentMonthDays(date) {
+	return 10;
+}
+
+function calcularFiniquitoMes(salario, firingDate) {
+	var dailyWage = calculateDailyWage(salario);
+	var currentMonthDays = calculateCurrentMonthDays(firingDate);
+	return dailyWage * currentMonthDays;
 }
 
 function convertirDosDecimalesConComa(number) {
 	number = number.toFixed(DECIMAL_ACCURACY);
-	var string = number.toString();	
+	var string = number.toString();
 	return string.replace(".", ",");
 }
 
 /**
  * Calcular button click event
  */
-$(document).ready(function() {
-	$("#simulationForm").submit(function(event) {		  
-		  event.preventDefault();
-		  
-		  var finiquitoMes = calcularFiniquitoMes($("#salario").val());
-		  
-		  $("#finiquitoMes").val(convertirDosDecimalesConComa(finiquitoMes));
-		  $("#tabs").tabs("option", "active", 1);
-	});	
-});
+$(document).ready(
+		function() {
+			$("#simulationForm").submit(
+					function(event) {
+						event.preventDefault();
+						var finiquitoMes = calcularFiniquitoMes($("#salario")
+								.val(), $("#despido").val());
+						$("#finiquitoMes").val(
+								convertirDosDecimalesConComa(finiquitoMes));
+						$("#tabs").tabs("option", "active", 1);
+					});
+		});
 
 /**
  * Dates for Spain
@@ -92,6 +103,6 @@ $(document).ready(function() {
  */
 $(document).ready(function() {
 	$(function() {
-	    $("#tabs").tabs();
+		$("#tabs").tabs();
 	});
 });

@@ -1,12 +1,20 @@
 var DAYS_PER_YEAR = 360;
+var DAYS_PER_YEAR_14_PAYS = 420;
 var DECIMAL_ACCURACY = 2;
+var DATE_FORMAT = "dd/mm/yy";
+
+
+function calculateDailyWageFourteenPays(wage) {
+	return parseInt(wage) / DAYS_PER_YEAR_14_PAYS;
+}
 
 function calculateDailyWage(wage) {
 	return parseInt(wage) / DAYS_PER_YEAR;
 }
 
-function calculateCurrentMonthDays(date) {
-	return 10;
+function calculateCurrentMonthDays(date) {		
+	var dateObj = $.datepicker.parseDate(DATE_FORMAT, date);	
+	return dateObj.getDate();
 }
 
 function calcularFiniquitoMes(salario, firingDate) {
@@ -24,18 +32,14 @@ function convertirDosDecimalesConComa(number) {
 /**
  * Calcular button click event
  */
-$(document).ready(
-		function() {
-			$("#simulationForm").submit(
-					function(event) {
-						event.preventDefault();
-						var finiquitoMes = calcularFiniquitoMes($("#salario")
-								.val(), $("#despido").val());
-						$("#finiquitoMes").val(
-								convertirDosDecimalesConComa(finiquitoMes));
-						$("#tabs").tabs("option", "active", 1);
-					});
-		});
+$(document).ready(function() {
+	$("#simulationForm").submit(function(event) {
+		event.preventDefault();
+		var finiquitoMes = calcularFiniquitoMes($("#salario").val(), $("#despido").val());
+		$("#finiquitoMes").val(convertirDosDecimalesConComa(finiquitoMes));
+		$("#tabs").tabs("option", "active", 1); // Go to results tab
+	});
+});
 
 /**
  * Dates for Spain
@@ -46,17 +50,14 @@ $(function($) {
 		prevText : '<Ant',
 		nextText : 'Sig>',
 		currentText : 'Hoy',
-		monthNames : [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-				'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre',
-				'Diciembre' ],
-		monthNamesShort : [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul',
-				'Ago', 'Sep', 'Oct', 'Nov', 'Dic' ],
-		dayNames : [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves',
-				'Viernes', 'Sábado' ],
+		monthNames : [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre',
+				'Octubre', 'Noviembre', 'Diciembre' ],
+		monthNamesShort : [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic' ],
+		dayNames : [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado' ],
 		dayNamesShort : [ 'Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb' ],
 		dayNamesMin : [ 'Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá' ],
 		weekHeader : 'Sm',
-		dateFormat : 'dd/mm/yy',
+		dateFormat : DATE_FORMAT,
 		firstDay : 1,
 		isRTL : false,
 		showMonthAfterYear : false,

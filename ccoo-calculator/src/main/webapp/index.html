@@ -36,7 +36,7 @@
 					  <label class="col-md-2 control-label" for="antiguedad">Fecha de antig&uuml;edad</label>
 					  <div class="col-md-4">
 						<div class="input-group">				  			    
-					      <input id="antiguedad" name="antiguedad" class="form-control" placeholder="" type="text">
+					      <input id="antiguedad" name="antiguedad" class="form-control" placeholder="" type="text" required pattern="\d{1,2}/\d{1,2}/\d{4}">
 					      <span class="input-group-addon">d&iacute;a/mes/a&ntilde;o</span>
 					    </div>				      				    
 					    <p class="help-block">Fecha de antig&uuml;edad que figura en la cabecera de la n&oacute;mina</p>
@@ -47,7 +47,7 @@
 					  <label class="col-md-2 control-label" for="despido">Fecha de despido</label>
 					  <div class="col-md-4">
 					  	<div class="input-group">			    
-					      <input id="despido" name="despido" class="form-control" placeholder="" type="text">
+					      <input id="despido" name="despido" class="form-control" placeholder="" type="text" required pattern="\d{1,2}/\d{1,2}/\d{4}">
 					      <span class="input-group-addon">d&iacute;a/mes/a&ntilde;o</span>
 					    </div>				      				    
 					    <p class="help-block">Fecha del despido, si se produce un viernes se debe indicar como fecha el lunes siguiente</p>

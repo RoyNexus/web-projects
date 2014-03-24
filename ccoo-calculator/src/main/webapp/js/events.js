@@ -23,20 +23,22 @@ function calcularFiniquitoMes(salario, firingDate) {
 	return dailyWage * currentMonthDays;
 }
 
-function convertirDosDecimalesConComa(number) {
-	number = number.toFixed(DECIMAL_ACCURACY);
-	var string = number.toString();
-	return string.replace(".", ",");
+function calcularFiniquitoVacaciones() {
+	return 0;
 }
+
 
 /**
  * Calcular button click event
  */
 $(document).ready(function() {
 	$("#simulationForm").submit(function(event) {
-		event.preventDefault();
+		event.preventDefault(); // cancel submit
 		var finiquitoMes = calcularFiniquitoMes($("#salario").val(), $("#despido").val());
+		var finiquitoVacaciones = calcularFiniquitoVacaciones($("#despido").val(), $("#disfrutadas").val());
+		
 		$("#finiquitoMes").val(convertirDosDecimalesConComa(finiquitoMes));
+		$("#finiquitoVacaciones").val(convertirDosDecimalesConComa(finiquitoVacaciones));
 		$("#tabs").tabs("option", "active", 1); // Go to results tab
 	});
 });
@@ -107,3 +109,10 @@ $(document).ready(function() {
 		$("#tabs").tabs();
 	});
 });
+
+
+function convertirDosDecimalesConComa(number) {
+	number = number.toFixed(DECIMAL_ACCURACY);
+	var string = number.toString();
+	return string.replace(".", ",");
+}

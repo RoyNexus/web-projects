@@ -1,52 +1,3 @@
-var DAYS_PER_YEAR = 360;
-var DAYS_PER_YEAR_14_PAYS = 420;
-var DECIMAL_ACCURACY = 2;
-var DATE_FORMAT = "dd/mm/yy";
-var DATE_FIRST_DAY = "01";
-var DATE_SEPARATOR = "/";
-var MILLI_SECONDS_TO_DAYS = 86400000;
-
-function getDailyWageFourteenPays(wage) {
-    return parseInt(wage) / DAYS_PER_YEAR_14_PAYS;
-}
-
-function getDailyWage(wage) {
-    return parseInt(wage) / DAYS_PER_YEAR;
-}
-
-function getDateObjectFromString(dateString) {
-    return $.datepicker.parseDate(DATE_FORMAT, dateString);
-}
-
-function getCurrentMonthDays(date) {
-    var dateObj = getDateObjectFromString(date);
-    return dateObj.getDate();
-}
-
-function getCurrentYear(date) {
-    var dateObj = getDateObjectFromString(date);
-    return dateObj.getFullYear();
-}
-
-function getDaysFromNewYearsDay(date) {    
-    var dateNewYearsDay = getDateObjectFromString(DATE_FIRST_DAY + DATE_SEPARATOR + DATE_FIRST_DAY + DATE_SEPARATOR
-	    + getCurrentYear(date));
-    var dateCurrentDate = getDateObjectFromString(date);    
-    var milliSecondsDiff = dateCurrentDate.getTime() - dateNewYearsDay.getTime();    
-    return Math.floor(milliSecondsDiff / MILLI_SECONDS_TO_DAYS);
-}
-
-function calcularFiniquitoMes(salario, firingDate) {
-    var dailyWage = getDailyWage(salario);
-    var currentMonthDays = getCurrentMonthDays(firingDate);
-    return dailyWage * currentMonthDays;
-}
-
-function calcularFiniquitoVacaciones(firingDate, enjoyedDays, officialDays, salario) {
-    var daysFromNewYearsDay = getDaysFromNewYearsDay(firingDate);    
-    var remainingDays = (daysFromNewYearsDay * officialDays / DAYS_PER_YEAR) - enjoyedDays;
-    return getDailyWage(salario) * remainingDays;
-}
 
 /**
  * Calcular button click event
@@ -60,8 +11,8 @@ $(document).ready(
 			var finiquitoVacaciones = calcularFiniquitoVacaciones($("#despido").val(), $("#disfrutadas")
 				.val(), $("#officialDays").val(), $("#salario").val());
 
-			$("#finiquitoMes").val(convertirDosDecimalesConComa(finiquitoMes));
-			$("#finiquitoVacaciones").val(convertirDosDecimalesConComa(finiquitoVacaciones));
+			$("#finiquitoMes").val(getTwoDecimalsWithFloat(finiquitoMes));
+			$("#finiquitoVacaciones").val(getTwoDecimalsWithFloat(finiquitoVacaciones));
 			$("#tabs").tabs("option", "active", 1); // Go to results tab
 		    });
 	});
@@ -133,8 +84,3 @@ $(document).ready(function() {
     });
 });
 
-function convertirDosDecimalesConComa(number) {
-    number = number.toFixed(DECIMAL_ACCURACY);
-    var string = number.toString();
-    return string.replace(".", ",");
-}

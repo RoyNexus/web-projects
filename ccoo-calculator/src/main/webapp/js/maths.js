@@ -5,8 +5,8 @@ var DAYS_PER_YEAR_14_PAYS = 420;
 function getTwoDecimalsWithFloat(number) {
 	try {
 		number = number.toFixed(DECIMAL_ACCURACY);
-		var string = number.toString();
-		return string.replace(".", ",");
+		var numberInString = number.toString();
+		return numberInString.replace(".", ",");
 	} catch (exception) {
 		return "NaN";
 	}

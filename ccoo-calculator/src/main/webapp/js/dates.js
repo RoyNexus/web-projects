@@ -3,8 +3,6 @@ var DATE_FIRST_DAY = "01";
 var DATE_SEPARATOR = "/";
 var MILLI_SECONDS_TO_DAYS = 86400000;
 
-
-
 function getCurrentMonthDays(date) {
 	var dateObj = getDateObjectFromString(date);
 	return dateObj.getDate();

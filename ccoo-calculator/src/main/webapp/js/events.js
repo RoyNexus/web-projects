@@ -1,4 +1,3 @@
-
 /**
  * Calcular button click event
  */
@@ -7,8 +6,14 @@ $(document).ready(
 	    $("#simulationForm").submit(
 		    function(event) {
 			event.preventDefault(); // cancel submit
-			var finiquitoMes = calcularFiniquitoMes($("#salario").val(), $("#despido").val());
-			var finiquitoVacaciones = calcularFiniquitoVacaciones($("#despido").val(), $("#disfrutadas")
+			var finiquitoMes;			
+			if ($("#12pagas").prop("checked")) {
+			    finiquitoMes = getFiniquitoMes12Pagas($("#salario").val(), $("#despido").val(), $("#reduccion").val());
+			} else {
+			    finiquitoMes = getFiniquitoMes14Pagas($("#salario").val(), $("#despido").val(), $("#reduccion").val());
+			}
+			
+			var finiquitoVacaciones = getFiniquitoVacaciones($("#despido").val(), $("#disfrutadas")
 				.val(), $("#officialDays").val(), $("#salario").val());
 
 			$("#finiquitoMes").val(getTwoDecimalsWithFloat(finiquitoMes));
@@ -83,4 +88,3 @@ $(document).ready(function() {
 	$("#tabs").tabs();
     });
 });
-

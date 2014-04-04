@@ -6,18 +6,23 @@ $(document).ready(
 	    $("#simulationForm").submit(
 		    function(event) {
 			event.preventDefault(); // cancel submit
-			var finiquitoMes;			
+			var finiquitoMes = 0;
+			var finiquitoVacaciones = 0;
+			var finiquitoPagaExtra = 0;
+			
 			if ($("#12pagas").prop("checked")) {
 			    finiquitoMes = getFiniquitoMes12Pagas($("#salario").val(), $("#despido").val(), $("#reduccion").val());
 			} else {
 			    finiquitoMes = getFiniquitoMes14Pagas($("#salario").val(), $("#despido").val(), $("#reduccion").val());
+			    finiquitoPagaExtra = getFiniquitoPagaExtra($("#salario").val(), $("#despido").val());
 			}
 			
 			var finiquitoVacaciones = getFiniquitoVacaciones($("#despido").val(), $("#disfrutadas")
 				.val(), $("#officialDays").val(), $("#salario").val());
-
+						
 			$("#finiquitoMes").val(getTwoDecimalsWithFloat(finiquitoMes));
 			$("#finiquitoVacaciones").val(getTwoDecimalsWithFloat(finiquitoVacaciones));
+			$("#pagaExtra").val(getTwoDecimalsWithFloat(finiquitoPagaExtra));
 			$("#tabs").tabs("option", "active", 1); // Go to results tab
 		    });
 	});

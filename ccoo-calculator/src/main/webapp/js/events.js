@@ -9,20 +9,25 @@ $(document).ready(
 			var finiquitoMes = 0;
 			var finiquitoVacaciones = 0;
 			var finiquitoPagaExtra = 0;
-			
+
 			if ($("#12pagas").prop("checked")) {
-			    finiquitoMes = getFiniquitoMes12Pagas($("#salario").val(), $("#despido").val(), $("#reduccion").val());
+			    finiquitoMes = getFiniquitoMes12Pagas($("#salario").val(), $("#despido").val(), $(
+				    "#reduccion").val());
 			} else {
-			    finiquitoMes = getFiniquitoMes14Pagas($("#salario").val(), $("#despido").val(), $("#reduccion").val());
+			    finiquitoMes = getFiniquitoMes14Pagas($("#salario").val(), $("#despido").val(), $(
+				    "#reduccion").val());
 			    finiquitoPagaExtra = getFiniquitoPagaExtra($("#salario").val(), $("#despido").val());
 			}
-			
-			var finiquitoVacaciones = getFiniquitoVacaciones($("#despido").val(), $("#disfrutadas")
-				.val(), $("#officialDays").val(), $("#salario").val());
-						
+
+			var finiquitoVacaciones = getFiniquitoVacaciones($("#despido").val(), $("#disfrutadas").val(),
+				$("#officialDays").val(), $("#salario").val());
+
+			var totalFiniquito = finiquitoMes + finiquitoPagaExtra + finiquitoVacaciones;
+
 			$("#finiquitoMes").val(getTwoDecimalsWithFloat(finiquitoMes));
 			$("#finiquitoVacaciones").val(getTwoDecimalsWithFloat(finiquitoVacaciones));
 			$("#pagaExtra").val(getTwoDecimalsWithFloat(finiquitoPagaExtra));
+			$("#totalFiniquito").val(getTwoDecimalsWithFloat(totalFiniquito));
 			$("#tabs").tabs("option", "active", 1); // Go to results tab
 		    });
 	});

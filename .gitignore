@@ -2,3 +2,5 @@
 /ccoo-calculator/*.classpath
 /ccoo-calculator/.settings
 bin
+*.class
+/simulador/WebContent/WEB-INF/lib

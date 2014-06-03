@@ -24,3 +24,9 @@ QUnit.test("getCurrentMonthOk", function(assert) {
     assert.equal(getCurrentMonth("31/12/2015"), 12, "31/12/2015 -> 12");
 
 });
+
+QUnit.test("getDaysBetweenDatesStringOk", function(assert) {
+    assert.equal(getDaysBetweenDatesString("31/01/2007", "01/01/2012"), 1797, "getDaysBetweenDatesOk");
+    assert.equal(getDaysBetweenDatesString("31/03/2012", "02/06/2014"), 794, "getDaysBetweenDatesOk");
+    assert.equal(getDaysBetweenDatesString("01/04/2012", "02/04/2012"), 2, "getDaysBetweenDatesOk");
+});

@@ -52,11 +52,31 @@ QUnit.test("getFiniquitoPagaExtraOk", function(assert) {
     assert.equal(getFiniquitoPagaExtra(21000, "01/12/2014"), 1500, "getFiniquitoPagaExtraDiciembreOk");
 });
 
+QUnit.test("getDiasIndemnizacionObraOk", function(assert) {
+    assert.equal(getDiasIndemnizacionObra("31/03/2008"), 8, "Indemnizacion 2008");
+    assert.equal(getDiasIndemnizacionObra("31/03/2009"), 8, "Indemnizacion 2009");
+    assert.equal(getDiasIndemnizacionObra("31/07/2010"), 8, "Indemnizacion 2010");
+    assert.equal(getDiasIndemnizacionObra("31/12/2011"), 8, "Indemnizacion 2011");
+    assert.equal(getDiasIndemnizacionObra("31/03/2012"), 9, "Indemnizacion 2012");
+    assert.equal(getDiasIndemnizacionObra("20/03/2013"), 10, "Indemnizacion 2013");
+    assert.equal(getDiasIndemnizacionObra("31/03/2014"), 11, "Indemnizacion 2014");
+    assert.equal(getDiasIndemnizacionObra("12/03/2015"), 12, "Indemnizacion 2015");
+    assert.equal(getDiasIndemnizacionObra("30/11/2018"), 12, "Indemnizacion > 2015");
+});
+
 QUnit.test("getFiniquitoDespidoObjetivoOk", function(assert) {
     assert.equal(getFiniquitoDespidoObjetivo(32000, "15/04/2014", "15/04/2014"), 4.938271604938271, "Despido Objetivo Dias = 1");
     assert.equal(getFiniquitoDespidoObjetivo(22000, "15/01/2014", "14/01/2014"), 0, "Despido Objetivo Fechas incorrectas");
     assert.equal(getFiniquitoDespidoObjetivo(22000, "04/06/2012", "08/09/2014"), 2807.716049382716, "Despido Objetivo 22K y 2 a\u00F1os");
     assert.equal(getFiniquitoDespidoObjetivo(42000, "15/10/2009", "08/09/2014"), 11601.851851851852, "Despido Objetivo 42K y 4 a\u00F1os");
     assert.equal(getFiniquitoDespidoObjetivo(40000, "01/12/2005", "01/12/2014"), 20296.296296296296, "Despido Objetivo 40K y 9 a\u00F1os");
+});
+
+QUnit.test("getFiniquitoDespidoObraOk", function(assert) {
+    assert.equal(getFiniquitoDespidoObra(32000, "15/04/2014", "15/04/2014"), 2.716049382716049, "Despido Obra Dias = 1");
+    assert.equal(getFiniquitoDespidoObra(22000, "15/01/2014", "14/01/2014"), 0, "Despido Obra Fechas incorrectas");
+    assert.equal(getFiniquitoDespidoObra(22000, "04/06/2012", "08/09/2014"), 1263.4722222222224, "Despido Obra 22K y 2 a\u00F1os");
+    assert.equal(getFiniquitoDespidoObra(42000, "15/10/2009", "08/09/2014"), 4640.740740740741, "Despido Obra 42K y 4 a\u00F1os");
+    assert.equal(getFiniquitoDespidoObra(40000, "01/12/2005", "01/12/2014"), 8118.518518518518, "Despido Obra 40K y 9 a\u00F1os");
 });
 

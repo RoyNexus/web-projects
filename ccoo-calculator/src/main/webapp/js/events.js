@@ -1,46 +1,60 @@
 /**
  * Calcular button click event
  */
-$(document).ready(
-		function() {
-			$("#simulationForm").submit(
-					function(event) {
-						event.preventDefault(); // cancel submit
-						var finiquitoMes = 0;
-						var finiquitoVacaciones = 0;
-						var finiquitoPagaExtra = 0;
-						var totalFiniquito = 0;
-						var indemnizacion = 0;
+$(document)
+		.ready(
+				function() {
+					$("#simulationForm")
+							.submit(
+									function(event) {
+										event.preventDefault(); // cancel submit
+										var finiquitoMes = 0;
+										var finiquitoVacaciones = 0;
+										var finiquitoPagaExtra = 0;
+										var totalFiniquito = 0;
+										var indemnizacion = 0;
 
-						if ($("#12pagas").prop("checked")) {
-							finiquitoMes = getFiniquitoMes12Pagas($("#salario").val(), $("#despido").val(), $(
-									"#reduccion").val());
-						} else {
-							finiquitoMes = getFiniquitoMes14Pagas($("#salario").val(), $("#despido").val(), $(
-									"#reduccion").val());
-							finiquitoPagaExtra = getFiniquitoPagaExtra($("#salario").val(), $("#despido").val());
-						}
+										if ($("#12pagas").prop("checked")) {
+											finiquitoMes = getFiniquitoMes12Pagas($("#salario").val(), $("#despido")
+													.val(), $("#reduccion").val());
+										} else {
+											finiquitoMes = getFiniquitoMes14Pagas($("#salario").val(), $("#despido")
+													.val(), $("#reduccion").val());
+											finiquitoPagaExtra = getFiniquitoPagaExtra($("#salario").val(), $(
+													"#despido").val());
+										}
 
-						finiquitoVacaciones = getFiniquitoVacaciones($("#despido").val(), $("#disfrutadas").val(), $(
-								"#officialDays").val(), $("#salario").val());
+										finiquitoVacaciones = getFiniquitoVacaciones($("#despido").val(), $(
+												"#disfrutadas").val(), $("#officialDays").val(), $("#salario").val());
 
-						if ($("#objetivo").prop("checked")) {
-							// Despido Objetivo
-							$("#indemnizacionLbl").html("Indemnizaci&oacute;n (20 d&iacute;as por a\u00F1o trabajado)");
-							indemnizacion = getFiniquitoDespidoObjetivo($("#salario").val(), $("#antiguedad").val(), $(
-									"#despido").val());
-						}
+										if ($("#objetivo").prop("checked")) {
+											// Despido Objetivo
+											$("#indemnizacionLbl").html(
+													"Indemnizaci&oacute;n (20 d&iacute;as por a\u00F1o trabajado)");
+											indemnizacion = getFiniquitoDespidoObjetivo($("#salario").val(), $(
+													"#antiguedad").val(), $("#despido").val());
+										} else if ($("#obra").prop("checked")) {
+											// Despido fin de obra
+											var diasIndemnizacion = getDiasIndemnizacionObra($("#antiguedad").val());
+											$("#indemnizacionLbl").html(
+													"Indemnizaci&oacute;n (" + diasIndemnizacion
+															+ " d&iacute;as por a\u00F1o trabajado)");
+											indemnizacion = getFiniquitoDespidoObra($("#salario").val(), $(
+													"#antiguedad").val(), $("#despido").val());
 
-						totalFiniquito = finiquitoMes + finiquitoPagaExtra + finiquitoVacaciones + indemnizacion;
+										}
 
-						$("#finiquitoMes").val(getTwoDecimalsWithFloat(finiquitoMes));
-						$("#finiquitoVacaciones").val(getTwoDecimalsWithFloat(finiquitoVacaciones));
-						$("#pagaExtra").val(getTwoDecimalsWithFloat(finiquitoPagaExtra));
-						$("#totalFiniquito").val(getTwoDecimalsWithFloat(totalFiniquito));
-						$("#totalIndemnizacion").val(getTwoDecimalsWithFloat(indemnizacion));
-						$("#tabs").tabs("option", "active", 1); // Go to results tab
-					});
-		});
+										totalFiniquito = finiquitoMes + finiquitoPagaExtra + finiquitoVacaciones
+												+ indemnizacion;
+
+										$("#finiquitoMes").val(getTwoDecimalsWithFloat(finiquitoMes));
+										$("#finiquitoVacaciones").val(getTwoDecimalsWithFloat(finiquitoVacaciones));
+										$("#pagaExtra").val(getTwoDecimalsWithFloat(finiquitoPagaExtra));
+										$("#totalFiniquito").val(getTwoDecimalsWithFloat(totalFiniquito));
+										$("#totalIndemnizacion").val(getTwoDecimalsWithFloat(indemnizacion));
+										$("#tabs").tabs("option", "active", 1); // Go to results tab
+									});
+				});
 
 /**
  * Dates for Spain

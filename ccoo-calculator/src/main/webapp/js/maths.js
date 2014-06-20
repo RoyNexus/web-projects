@@ -6,12 +6,49 @@ var HALF_YEAR = 6;
 var EXTRA_PAY_MONTHLY = 84; // 14 * 6
 var DIAS_DESPIDO_OBJETIVO = 20;
 
+function getFiniquitoDespidoObra(wage, registrationDate, firingDate) {
+	var result = 0;
+	var diasIndemnizacion = getDiasIndemnizacionObra(registrationDate);
+	result = getIndemnizacion(wage, registrationDate, firingDate, diasIndemnizacion);
+	return result;
+}
+
 function getFiniquitoDespidoObjetivo(wage, registrationDate, firingDate) {
 	var result = 0;
+	result = getIndemnizacion(wage, registrationDate, firingDate, DIAS_DESPIDO_OBJETIVO);
+	return result;
+}
+
+function getIndemnizacion(wage, registrationDate, firingDate, diasIndemnizacion) {
+	var result = 0;
 	var workedDays = getDaysBetweenDatesString(registrationDate, firingDate);
-	var totalDays = (workedDays * DIAS_DESPIDO_OBJETIVO) / DAYS_PER_YEAR;
+	var totalDays = (workedDays * diasIndemnizacion) / DAYS_PER_YEAR;
 	result = totalDays * (wage / DAYS_PER_YEAR);
 	return result;
+}
+
+function getDiasIndemnizacionObra(registrationDate) {
+	var currentYear = getCurrentYear(registrationDate);
+	if (currentYear > 2015) {
+		currentYear = 2015;
+	}
+	switch (currentYear) {
+	case 2015:
+		return 12;
+		break;
+	case 2014:
+		return 11;
+		break;
+	case 2013:
+		return 10;
+		break;
+	case 2012:
+		return 9;
+		break;
+	default:
+		return 8;
+		break;
+	}
 }
 
 function getTwoDecimalsWithFloat(number) {

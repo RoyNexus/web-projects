@@ -45,9 +45,18 @@ QUnit.test("getFiniquitoMes14PagasOk", function(assert) {
 });
 
 QUnit.test("getFiniquitoPagaExtraOk", function(assert) {
-    assert.equal(getFiniquitoPagaExtra(32000, "15/04/2014"), 1523.8095238095239, "getFiniquitoPagaExtraJunioOk");
-    assert.equal(getFiniquitoPagaExtra(22000, "15/01/2014"), 261.9047619047619, "getFiniquitoPagaExtraJunioOk");
+    assert.equal(getFiniquitoPagaExtra(32000, "15/04/2014"), 1523.8095238095239, "getFiniquitoPagaExtraAbrilOk");
+    assert.equal(getFiniquitoPagaExtra(22000, "15/01/2014"), 261.9047619047619, "getFiniquitoPagaExtraEneroOk");
     assert.equal(getFiniquitoPagaExtra(22000, "04/06/2013"), 1571.4285714285716, "getFiniquitoPagaExtraJunioOk");
-    assert.equal(getFiniquitoPagaExtra(32000, "15/10/2014"), 1523.8095238095239, "getFiniquitoPagaExtraNavidadOk");
-    assert.equal(getFiniquitoPagaExtra(21000, "01/12/2014"), 1500, "getFiniquitoPagaExtraNavidadOk");
+    assert.equal(getFiniquitoPagaExtra(32000, "15/10/2014"), 1523.8095238095239, "getFiniquitoPagaExtraOctubreOk");
+    assert.equal(getFiniquitoPagaExtra(21000, "01/12/2014"), 1500, "getFiniquitoPagaExtraDiciembreOk");
 });
+
+QUnit.test("getFiniquitoDespidoObjetivoOk", function(assert) {
+    assert.equal(getFiniquitoDespidoObjetivo(32000, "15/04/2014", "15/04/2014"), 4.938271604938271, "Despido Objetivo Dias = 1");
+    assert.equal(getFiniquitoDespidoObjetivo(22000, "15/01/2014", "14/01/2014"), 0, "Despido Objetivo Fechas incorrectas");
+    assert.equal(getFiniquitoDespidoObjetivo(22000, "04/06/2012", "08/09/2014"), 2807.716049382716, "Despido Objetivo 22K y 2 a\u00F1os");
+    assert.equal(getFiniquitoDespidoObjetivo(42000, "15/10/2009", "08/09/2014"), 11601.851851851852, "Despido Objetivo 42K y 4 a\u00F1os");
+    assert.equal(getFiniquitoDespidoObjetivo(40000, "01/12/2005", "01/12/2014"), 20296.296296296296, "Despido Objetivo 40K y 9 a\u00F1os");
+});
+

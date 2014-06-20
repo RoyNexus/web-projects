@@ -4,6 +4,15 @@ var DAYS_PER_YEAR_14_PAYS = 420; // 14 * 30
 var HOURS_PER_DAY = 8;
 var HALF_YEAR = 6;
 var EXTRA_PAY_MONTHLY = 84; // 14 * 6
+var DIAS_DESPIDO_OBJETIVO = 20;
+
+function getFiniquitoDespidoObjetivo(wage, registrationDate, firingDate) {
+	var result = 0;
+	var workedDays = getDaysBetweenDatesString(registrationDate, firingDate);
+	var totalDays = (workedDays * DIAS_DESPIDO_OBJETIVO) / DAYS_PER_YEAR;
+	result = totalDays * (wage / DAYS_PER_YEAR);
+	return result;
+}
 
 function getTwoDecimalsWithFloat(number) {
 	try {
@@ -58,10 +67,8 @@ function getFiniquitoMes14Pagas(salario, firingDate, hoursReduction) {
 function getFiniquitoPagaExtra(salario, firingDate) {
 	var months = getCurrentMonth(firingDate);
 	var fractionPay = salario / EXTRA_PAY_MONTHLY;
-	if (months < HALF_YEAR) {
+	if (months <= HALF_YEAR) {
 		return fractionPay * months;
-	} else if (months == HALF_YEAR) {
-		return fractionPay * HALF_YEAR;
 	} else {
 		return fractionPay * (months - HALF_YEAR);
 	}

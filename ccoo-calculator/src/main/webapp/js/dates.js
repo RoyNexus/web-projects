@@ -3,6 +3,7 @@ var DATE_FIRST_DAY = "01";
 var DATE_SEPARATOR = "/";
 var MILLI_SECONDS_TO_DAYS = 86400000;
 var ADD_ONE = 1;
+var FECHA_REFORMA_LABORAL = "12/02/2012";
 
 function getCurrentMonthDays(date) {
 	var dateObj = getDateObjectFromString(date);

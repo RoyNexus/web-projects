@@ -5,6 +5,15 @@ var HOURS_PER_DAY = 8;
 var HALF_YEAR = 6;
 var EXTRA_PAY_MONTHLY = 84; // 14 * 6
 var DIAS_DESPIDO_OBJETIVO = 20;
+var DIAS_DESPIDO_IMPROCEDENTE = 33;
+var DIAS_DESPIDO_IMPROCEDENTE_ANTES = 45;
+
+function getFiniquitoDespidoImprocedente(wage, registrationDate, firingDate) {
+	var result = 0;
+	result = getIndemnizacion(wage, registrationDate, FECHA_REFORMA_LABORAL, DIAS_DESPIDO_IMPROCEDENTE_ANTES);
+	result += getIndemnizacion(wage, FECHA_REFORMA_LABORAL, firingDate, DIAS_DESPIDO_IMPROCEDENTE);
+	return result;
+}
 
 function getFiniquitoDespidoObra(wage, registrationDate, firingDate) {
 	var result = 0;

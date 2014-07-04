@@ -42,6 +42,12 @@ $(document)
 											indemnizacion = getFiniquitoDespidoObra($("#salario").val(), $(
 													"#antiguedad").val(), $("#despido").val());
 
+										} else if ($("#improcedente").prop("checked")) {
+											// Despido Improcedente
+											$("#indemnizacionLbl").html(
+													"Indemnizaci&oacute;n (45/33 d&iacute;as por a\u00F1o trabajado)");
+											indemnizacion = getFiniquitoDespidoImprocedente($("#salario").val(), $(
+													"#antiguedad").val(), $("#despido").val());
 										}
 
 										totalFiniquito = finiquitoMes + finiquitoPagaExtra + finiquitoVacaciones

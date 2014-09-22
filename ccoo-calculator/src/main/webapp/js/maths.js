@@ -31,8 +31,10 @@ function getFiniquitoDespidoObjetivo(wage, registrationDate, firingDate) {
 function getIndemnizacion(wage, registrationDate, firingDate, diasIndemnizacion) {
 	var result = 0;
 	var workedDays = getDaysBetweenDatesString(registrationDate, firingDate);
-	var totalDays = (workedDays * diasIndemnizacion) / DAYS_PER_YEAR;
-	result = totalDays * (wage / DAYS_PER_YEAR);
+	if (workedDays > 0) {
+	    var totalDays = (workedDays * diasIndemnizacion) / DAYS_PER_YEAR;
+	    result = totalDays * (wage / DAYS_PER_YEAR);
+	}
 	return result;
 }
 

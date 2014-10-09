@@ -93,6 +93,7 @@ $(function($) {
 $(document).ready(function() {
 	$("#antiguedad").datepicker({
 		changeYear : true,
+		yearRange: '2000:2018',
 		beforeShow : function() {
 			setTimeout(function() {
 				$('.ui-datepicker').css('z-index', 99999999999999);
@@ -102,6 +103,7 @@ $(document).ready(function() {
 	});
 	$("#despido").datepicker({
 		changeYear : true,
+		yearRange: '2000:2018',
 		beforeShow : function() {
 			setTimeout(function() {
 				$('.ui-datepicker').css('z-index', 99999999999999);

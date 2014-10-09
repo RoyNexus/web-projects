@@ -4,3 +4,4 @@
 bin
 *.class
 /simulador/WebContent/WEB-INF/lib
+/simulador/target

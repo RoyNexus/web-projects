@@ -30,3 +30,12 @@ QUnit.test("getDaysBetweenDatesStringOk", function(assert) {
     assert.equal(getDaysBetweenDatesString("31/03/2012", "02/06/2014"), 794, "getDaysBetweenDatesOk");
     assert.equal(getDaysBetweenDatesString("01/04/2012", "02/04/2012"), 2, "getDaysBetweenDatesOk");
 });
+
+QUnit.test("isStringDateGreaterThanOk", function(assert) {
+    assert.equal(isStringDateGreaterThan("31/01/2007", "01/01/2012"), false, "isStringDateGreaterThanOk");
+    assert.equal(isStringDateGreaterThan("31/03/2012", "02/06/2014"), false, "isStringDateGreaterThanOk");
+    assert.equal(isStringDateGreaterThan("04/04/2012", "02/04/2012"), true, "isStringDateGreaterThanOk");
+    assert.equal(isStringDateGreaterThan("02/04/2012", "02/04/2012"), false, "isStringDateGreaterThanOk");
+    assert.equal(isStringDateGreaterThan("03/05/2012", "02/04/2012"), true, "isStringDateGreaterThanOk");
+    assert.equal(isStringDateGreaterThan("01/01/2013", "31/12/2012"), true, "isStringDateGreaterThanOk");
+});

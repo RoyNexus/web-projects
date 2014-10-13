@@ -11,7 +11,11 @@ var DIAS_DESPIDO_IMPROCEDENTE_ANTES = 45;
 function getFiniquitoDespidoImprocedente(wage, registrationDate, firingDate) {
 	var result = 0;
 	result = getIndemnizacion(wage, registrationDate, FECHA_REFORMA_LABORAL, DIAS_DESPIDO_IMPROCEDENTE_ANTES);
-	result += getIndemnizacion(wage, FECHA_REFORMA_LABORAL, firingDate, DIAS_DESPIDO_IMPROCEDENTE);
+	if (isStringDateGreaterThan(registrationDate, FECHA_REFORMA_LABORAL)) {
+		result += getIndemnizacion(wage, registrationDate, firingDate, DIAS_DESPIDO_IMPROCEDENTE);	
+	} else {
+		result += getIndemnizacion(wage, FECHA_REFORMA_LABORAL, firingDate, DIAS_DESPIDO_IMPROCEDENTE);
+	}	
 	return result;
 }
 

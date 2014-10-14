@@ -44,6 +44,6 @@ function getDaysBetweenDatesObject(dateFrom, dateTo) {
 
 function isStringDateGreaterThan(stringFirstDate, stringCompareToDate) {
 	var firstDate = getDateObjectFromString(stringFirstDate);
-	var compareToDate = getDateObjectFromString(stringCompareToDate);	
-	return ((firstDate - compareToDate) > 0);	
+	var compareToDate = getDateObjectFromString(stringCompareToDate);
+	return ((firstDate - compareToDate) > 0);
 }

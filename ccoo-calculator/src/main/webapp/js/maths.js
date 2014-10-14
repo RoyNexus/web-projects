@@ -12,10 +12,10 @@ function getFiniquitoDespidoImprocedente(wage, registrationDate, firingDate) {
 	var result = 0;
 	result = getIndemnizacion(wage, registrationDate, FECHA_REFORMA_LABORAL, DIAS_DESPIDO_IMPROCEDENTE_ANTES);
 	if (isStringDateGreaterThan(registrationDate, FECHA_REFORMA_LABORAL)) {
-		result += getIndemnizacion(wage, registrationDate, firingDate, DIAS_DESPIDO_IMPROCEDENTE);	
+		result += getIndemnizacion(wage, registrationDate, firingDate, DIAS_DESPIDO_IMPROCEDENTE);
 	} else {
 		result += getIndemnizacion(wage, FECHA_REFORMA_LABORAL, firingDate, DIAS_DESPIDO_IMPROCEDENTE);
-	}	
+	}
 	return result;
 }
 
@@ -36,8 +36,8 @@ function getIndemnizacion(wage, registrationDate, firingDate, diasIndemnizacion)
 	var result = 0;
 	var workedDays = getDaysBetweenDatesString(registrationDate, firingDate);
 	if (workedDays > 0) {
-	    var totalDays = (workedDays * diasIndemnizacion) / DAYS_PER_YEAR;
-	    result = totalDays * (wage / DAYS_PER_YEAR);
+		var totalDays = (workedDays * diasIndemnizacion) / DAYS_PER_YEAR;
+		result = totalDays * (wage / DAYS_PER_YEAR);
 	}
 	return result;
 }
@@ -117,11 +117,30 @@ function getFiniquitoMes14Pagas(salario, firingDate, hoursReduction) {
 }
 
 function getFiniquitoPagaExtra(salario, firingDate) {
-	var months = getCurrentMonth(firingDate);
+	var currentMonth = getCurrentMonth(firingDate);
 	var fractionPay = salario / EXTRA_PAY_MONTHLY;
-	if (months <= HALF_YEAR) {
-		return fractionPay * months;
+	if (currentMonth <= HALF_YEAR) {
+		return fractionPay * currentMonth;
 	} else {
-		return fractionPay * (months - HALF_YEAR);
+		return fractionPay * (currentMonth - HALF_YEAR);
 	}
+}
+
+function getFiniquitoPagaExtra12Pagas(salario, firingDate) {
+	var currentMonth = getCurrentMonth(firingDate);
+	var currentMonthDays = getCurrentMonthDays(firingDate);
+	var fractionPay = salario / EXTRA_PAY_MONTHLY;
+	var result = 0;
+	if (currentMonth <= HALF_YEAR) {
+		result = fractionPay * currentMonth;
+		result = (result / currentMonth) / (30 * (30 - currentMonthDays));
+	} else {
+		result = fractionPay * (currentMonth - HALF_YEAR);
+		result = (result / (currentMonth - HALF_YEAR)) / (30 * (30 - currentMonthDays));
+	}
+
+	if (result < 0) {
+		result = 0;
+	}
+	return result;
 }

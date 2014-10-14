@@ -91,15 +91,18 @@ function getFiniquitoVacaciones(firingDate, enjoyedDays, officialDays, salario) 
 }
 
 function getFiniquitoMes12Pagas(salario, firingDate, hoursReduction) {
+	var result;
 	var dailyWage = getDailyWage(salario);
 	var currentMonthDays = getCurrentMonthDays(firingDate);
-	var result;
+	var vPagaExtra12Meses = ((salario / 14) / HALF_YEAR);
 	if (hoursReduction > 0) {
 		var reducedWage = (dailyWage / HOURS_PER_DAY) * (HOURS_PER_DAY - hoursReduction);
 		result = reducedWage * currentMonthDays;
 	} else {
 		result = dailyWage * currentMonthDays;
 	}
+
+	result += vPagaExtra12Meses
 	return result;
 }
 
@@ -124,23 +127,4 @@ function getFiniquitoPagaExtra(salario, firingDate) {
 	} else {
 		return fractionPay * (currentMonth - HALF_YEAR);
 	}
-}
-
-function getFiniquitoPagaExtra12Pagas(salario, firingDate) {
-	var currentMonth = getCurrentMonth(firingDate);
-	var currentMonthDays = getCurrentMonthDays(firingDate);
-	var fractionPay = salario / EXTRA_PAY_MONTHLY;
-	var result = 0;
-	if (currentMonth <= HALF_YEAR) {
-		result = fractionPay * currentMonth;
-		result = (result / currentMonth) / (30 * (30 - currentMonthDays));
-	} else {
-		result = fractionPay * (currentMonth - HALF_YEAR);
-		result = (result / (currentMonth - HALF_YEAR)) / (30 * (30 - currentMonthDays));
-	}
-
-	if (result < 0) {
-		result = 0;
-	}
-	return result;
 }

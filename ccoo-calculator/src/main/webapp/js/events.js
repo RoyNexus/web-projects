@@ -15,8 +15,6 @@ $(document).ready(
 						if ($("#12pagas").prop("checked")) {
 							finiquitoMes = getFiniquitoMes12Pagas($("#salario").val(), $("#despido").val(), $("#reduccion")
 									.val());
-							// Pendiente definición algoritmo
-							// finiquitoPagaExtra = getFiniquitoPagaExtra12Pagas($("#salario").val(), $("#despido").val());
 						} else {
 							finiquitoMes = getFiniquitoMes14Pagas($("#salario").val(), $("#despido").val(), $("#reduccion")
 									.val());

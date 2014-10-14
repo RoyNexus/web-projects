@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>es.roynexus</groupId>
-	<artifactId>ccoo-calculator</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>finiquitos</artifactId>
+	<version>1.0.0</version>
 	<packaging>war</packaging>
 
 	<properties>
@@ -11,7 +11,7 @@
 	</properties>
 
 	<build>
-		<finalName>calculator</finalName>
+		<finalName>finiquitos</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

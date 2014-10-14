@@ -1,6 +1,6 @@
-/ccoo-calculator/target
-/ccoo-calculator/*.classpath
-/ccoo-calculator/.settings
+/finiquitos/target
+/finiquitos/*.classpath
+/finiquitos/.settings
 bin
 *.class
 /simulador/WebContent/WEB-INF/lib

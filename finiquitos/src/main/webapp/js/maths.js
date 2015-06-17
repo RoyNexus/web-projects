@@ -92,7 +92,7 @@ function getFiniquitoVacaciones(firingDate, enjoyedDays, officialDays, salario) 
 
 function getFiniquitoMes12Pagas(salario, firingDate, hoursReduction) {
 	var result;
-	var dailyWage = getDailyWage(salario);
+	var dailyWage = getDailyWageFourteenPays(salario);
 	var currentMonthDays = getCurrentMonthDays(firingDate);
 	var vPagaExtra12Meses = ((salario / 14) / HALF_YEAR);
 	if (hoursReduction > 0) {

@@ -1,5 +1,5 @@
 var DECIMAL_ACCURACY = 2;
-var DAYS_PER_YEAR = 360; // 12 * 30
+var DAYS_PER_YEAR = 365; // 12 * 32.5 ha cambiado por jurisprudencia
 var DAYS_PER_YEAR_14_PAYS = 420; // 14 * 30
 var HOURS_PER_DAY = 8;
 var HALF_YEAR = 6;
